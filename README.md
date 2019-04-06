@@ -52,6 +52,14 @@ Requiere `pipenv`.
 pip install pipenv
 ```
 
+Para ejecutar el programa, hay que entrar en el entorno virtual:
+_Ejemplo con grado de identidad mínimo 90 y soporte mínimo 10, usando un archivo delta-blast_
+
+```bash
+pipenv shell
+./src/find_annotations.py -f tsv/Q03963.tsv 90 10
+```
+
 #### Preparar *virtual enviroment*
 
 Después de clonar el repo, ir al directorio raíz y ejecutar: ```pipenv install``` para crear el entorno e instalar todas las dependencias.
