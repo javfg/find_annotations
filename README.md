@@ -1,8 +1,8 @@
 # Práctica de Análisis de Secuencias
 
-Miguel Ángel Gutierrez Medina
-Osvaldas Vainauskas
-Javier Ferrer Gómez
+Miguel Ángel Gutierrez Medina  
+Osvaldas Vainauskas  
+Javier Ferrer Gómez  
 
 
 ## Trabajo 3
@@ -52,7 +52,7 @@ Requiere `pipenv`.
 pip install pipenv
 ```
 
-Para ejecutar el programa, hay que entrar en el entorno virtual:
+Para ejecutar el programa, hay que entrar en el entorno virtual:  
 _Ejemplo con grado de identidad mínimo 90 y soporte mínimo 10, usando un archivo delta-blast_
 
 ```bash
