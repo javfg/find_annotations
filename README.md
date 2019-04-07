@@ -68,7 +68,7 @@ _Ejemplo con grado de identidad mínimo del 90% y soporte mínimo 10, usando un 
 
 ```bash
 pipenv shell
-./src/find_annotations.py -f tsv/Q03963.tsv 90 10
+./src/find_annotations.py -f tsv/O14733.tsv.tsv 90 10
 ```
 
 
