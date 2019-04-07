@@ -34,7 +34,7 @@ def search_kegg(accessions):
                 .sort_values(by="count", ascending=False)
                 .reset_index(drop=True)
             )
-         except pandas.errors.EmptyDataError:
+        except pandas.errors.EmptyDataError:
             kegg=pandas.DataFrame()
 
         time_diff = (datetime.datetime.now() - start_time).total_seconds()
