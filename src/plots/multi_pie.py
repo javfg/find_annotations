@@ -7,7 +7,7 @@ from utils.tools import create_tps_file
 def create_entry(entry, link_body, color):
     return {
         "value": entry['count'],
-        "label": entry.description,
+        "label": entry.description.capitalize(),
         "xlink": {"href": f"{link_body}{entry.accession}"},
         "color": color
     }
