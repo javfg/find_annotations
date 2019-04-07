@@ -51,7 +51,7 @@ if args.file:
 
 elif args.protein:
     print(f"* Running with accession [{args.protein}]", end=" ")
-    name = args.protein
+    name = os.path.splitext(os.path.basename(args.protein))[0]
 
 print(f"(Min identity score: [{args.min_identity}], Min support score: [{args.min_support}]).")
 
@@ -64,7 +64,8 @@ if args.file:
     dblast_data = deltablast.read_dblast_file(args.file)
 
 elif args.protein:
-    dblast_data = deltablast.do_dblast_query(args.protein)
+   deltablast.do_dblast_query(args.protein)
+   dblast_data = deltablast.read_dblast_file(f"{args.protein}.tsp")
 
 # Selects rows with given identity score.
 selected_data = select_data(dblast_data, "% identity", args.min_identity)
