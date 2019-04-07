@@ -11,7 +11,7 @@ def select_data(source, column, value):
 #
 # Creates a tab separated file with annotation data
 #
-def create_file(go, kegg, min_support, min_identity, name):
+def create_tps_file(go, kegg, min_support, min_identity, name):
         file_name=f"Results-{name}.tps"
         with open(file_name,'w') as file:
                 file.write(f"###Functional Annotations Results for {name}\n")
