@@ -35,7 +35,6 @@ def do_dblast_query(query, evalue=0.001):
 def read_dblast_file(file_name):
 
     with yaspin(text="Reading Delta Blast search...", color="cyan") as sp:
-        sp.ok("✔")
 
         start_time = datetime.datetime.now()
         data = ""
