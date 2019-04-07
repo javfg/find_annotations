@@ -44,7 +44,7 @@ optional arguments:
 
 ### Instalación y uso
 
-Requiere `pipenv` y `ncbi-blast+` [Opcional si se utilizan archivos con resultados de busquedas Delta Blast previas.].
+Requiere `pipenv` y `ncbi-blast+`.
 
 
 
@@ -53,7 +53,7 @@ Requiere `pipenv` y `ncbi-blast+` [Opcional si se utilizan archivos con resultad
 ```bash
 pip install pipenv
 ```
-#### Instalar [ncbi-blast+](ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
+#### Instalar [ncbi-blast+](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/) [Opcional si se utilizan archivos con resultados de busquedas Delta Blast previas]
 
 ```sudo apt install ncbi-blast+```
 
