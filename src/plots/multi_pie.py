@@ -84,7 +84,7 @@ def plot(go_list, kegg_list, min_support, min_identity, name):
                 <a target=\"_blank\" href=\"{go_item['xlink']['href']}\">{go_item['label']}</a></li>")
         if kegg:
             html_file.write(f"\
-                            </ul>\")
+                            </ul>")
     if kegg:
         
         html_file.write(f"\
