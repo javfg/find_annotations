@@ -50,8 +50,9 @@ if args.file:
     name = os.path.splitext(os.path.basename(args.file))[0]
 
 elif args.protein:
-    print(f"* Running with accession [{args.protein}]", end=" ")
     name = os.path.splitext(os.path.basename(args.protein))[0]
+    print(f"* Running with accession [{name}]", end=" ")
+    
 
 print(f"(Min identity score: [{args.min_identity}], Min support score: [{args.min_support}]).")
 
