@@ -17,11 +17,12 @@ def search_kegg(accessions):
         for accession in accessions.dropna():
                 path = KEGG()
                 res = accession.split(":")
-
-                for k, val in path.get_pathway_by_gene(res[1], res[0]).items():
-                    _id = re.search("\d+", k).group(0)
-                    raw_data = f"{raw_data}map{_id}\t\"{val}\"\n"
-
+                try:
+                    for k, val in path.get_pathway_by_gene(res[1], res[0]).items():
+                        _id = re.search("\d+", k).group(0)
+                        raw_data = f"{raw_data}map{_id}\t\"{val}\"\n"
+                 except AttributeError:
+                    pass
         kegg = pandas.read_csv(pandas.compat.StringIO(raw_data), sep="\t", header=None)
         kegg.columns = ["accession", "description"]
 
