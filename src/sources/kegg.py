@@ -23,16 +23,19 @@ def search_kegg(accessions):
                         raw_data = f"{raw_data}map{_id}\t\"{val}\"\n"
                 except AttributeError:
                     pass
-        kegg = pandas.read_csv(pandas.compat.StringIO(raw_data), sep="\t", header=None)
-        kegg.columns = ["accession", "description"]
+        try: 
+            kegg = pandas.read_csv(pandas.compat.StringIO(raw_data), sep="\t", header=None)
+            kegg.columns = ["accession", "description"]
 
-        # Add column of counts.
-        kegg["count"] = kegg.groupby("accession")["accession"].transform("count")
-        kegg = (
-            kegg.drop_duplicates(subset="accession")
-            .sort_values(by="count", ascending=False)
-            .reset_index(drop=True)
-        )
+            # Add column of counts.
+            kegg["count"] = kegg.groupby("accession")["accession"].transform("count")
+            kegg = (
+                kegg.drop_duplicates(subset="accession")
+                .sort_values(by="count", ascending=False)
+                .reset_index(drop=True)
+            )
+         except pandas.errors.EmptyDataError:
+            kegg=pandas.DataFrame()
 
         time_diff = (datetime.datetime.now() - start_time).total_seconds()
 
