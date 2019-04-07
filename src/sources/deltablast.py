@@ -24,7 +24,7 @@ def do_dblast_query(query, evalue=0.001):
 
         time_diff = (datetime.datetime.now() - start_time).total_seconds()
 
-        sp.text = f"Performing Delta Blast search => Task done in {time_diff}."
+        sp.text = f"Performing Delta Blast search => Task done in {time_diff} seconds."
         sp.ok("✔")
 
 
