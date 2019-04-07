@@ -44,7 +44,7 @@ def create_html_file(go,kegg,min_identity,min_support,plot_file_name,name):
                 <object type=\"image/svg+xml\"data=\"{plot_file_name}\" height=\"800\"></object>\
                 <div>\
                     <div>\
-                        <h4>Minimum identity score: {min_identity}</h4>\
+                        <h4>Minimum identity score: {min_identity} %</h4>\
                         <h4>Minimum support score: {min_support}</h4>\
                         <div style=\"display: flex;\">")
         if go:
