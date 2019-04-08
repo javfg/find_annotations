@@ -37,6 +37,12 @@ _ = parser.add_argument("-f",
                         action="store",
                         help="Specify dblast output file with list of similar proteins")
 
+_ = parser.add_argument("-o",
+                        "--outfile",
+                        action="store",
+                        help="Specify output filename and path. An additional .svg file will be\
+                              created.")
+
 args = parser.parse_args()
 
 if args.protein is None and args.file is None:
@@ -53,7 +59,10 @@ elif args.protein:
     print(f"* Running with accession [{args.protein}]", end=" ")
     name = os.path.splitext(os.path.basename(args.protein))[0]
 
+outfile = os.path.splitext(args.outfile)[0] if args.outfile is not None else name
+
 print(f"(Min identity score: [{args.min_identity}], Min support score: [{args.min_support}]).")
+print(f"* Writing results to {outfile}.html")
 
 
 ###################################################################################################
@@ -64,8 +73,8 @@ if args.file:
     dblast_data = deltablast.read_dblast_file(args.file)
 
 elif args.protein:
-   deltablast.do_dblast_query(args.protein)
-   dblast_data = deltablast.read_dblast_file(f"{args.protein}.tsp")
+    deltablast.do_dblast_query(args.protein)
+    dblast_data = deltablast.read_dblast_file(f"{args.protein}.tsp")
 
 # Selects rows with given identity score.
 selected_data = select_data(dblast_data, "% identity", args.min_identity)
@@ -80,6 +89,6 @@ go_list = go.accumulate_go(uniprot_data['Gene ontology (GO)'])
 kegg_list = kegg.search_kegg(uniprot_data["Cross-reference (kegg)"])
 
 # Draw charts.
-multi_pie.plot(go_list, kegg_list, args.min_support, args.min_identity, name)
+multi_pie.plot(go_list, kegg_list, args.min_support, args.min_identity, name, outfile)
 
 webbrowser.open(f"{name}.html")

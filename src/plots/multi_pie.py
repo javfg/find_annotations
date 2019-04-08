@@ -24,7 +24,7 @@ def create_list(source, min_support, link_body, color):
 
 
 # Plots the multi pie chart and stats.
-def plot(go_list, kegg_list, min_support, min_identity, name):
+def plot(go_list, kegg_list, min_support, min_identity, name, outfile):
     custom_style = Style(
         opacity='0.8',
         opacity_hover='0.5',
@@ -47,10 +47,10 @@ def plot(go_list, kegg_list, min_support, min_identity, name):
     multi_pie.add('GO', go)
     multi_pie.add('KEGG', kegg)
 
-    plot_file_name = f"{name}-out.svg"
+    plot_file_name = f"{outfile}.svg"
     multi_pie.render_to_file(plot_file_name)
 
-    html_file = open(f"{name}.html", "w")
+    html_file = open(f"{outfile}.html", "w")
     html_file.write(f"\
 <!doctype html>\
 <html>\
