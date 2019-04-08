@@ -60,10 +60,16 @@ elif args.protein:
     print(f"* Running with accession [{name}]", end=" ")
 
 
-outfile = os.path.splitext(args.outfile)[0] if args.outfile is not None else name
+out = os.path.splitext(args.outfile)[0] if args.outfile is not None else name
+if not os.path.exists(os.path.split(out)[0]) and os.path.split(out)[0]:
+    raise Exception('Invalid output path!')
+else:
+    if not os.path.exists(out):
+        os.makedirs(out)
+    outfile=f"{out}/{os.path.split(out)[1]}"
 
 print(f"(Min identity score: [{args.min_identity}], Min support score: [{args.min_support}]).")
-print(f"* Writing results to {outfile}.html")
+print(f"* Writing results to {out}/")
 
 
 ###################################################################################################
