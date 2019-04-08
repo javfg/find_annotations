@@ -17,7 +17,7 @@ def accumulate_go(source):
         # Explodes go accesion values in lists to dataframe.
         for row in source.dropna().iteritems():
             for element in str(row[1]).split(";"):
-                description, accession = element[:-1].split("[")
+                description, accession = element[1:-1].split("[")
                 go.loc[len(go)] = (accession, description)
 
         # Add column of counts.

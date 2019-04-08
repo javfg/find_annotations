@@ -44,13 +44,18 @@ optional arguments:
 
 ### Instalación y uso
 
-Requiere `pipenv`.
+Requiere `pipenv` y `ncbi-blast+`.
+
+
 
 #### Instalar [pipenv](https://pipenv.readthedocs.io/en/latest/)
 
 ```bash
 pip install pipenv
 ```
+#### Instalar [ncbi-blast+](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/) [Opcional si se utilizan archivos con resultados de busquedas Delta Blast previas]
+
+```sudo apt install ncbi-blast+```
 
 #### Preparar *virtual enviroment*
 
@@ -59,11 +64,11 @@ Después de clonar el repo, ir al directorio raíz y ejecutar: ```pipenv install
 #### Ejecución
 
 Para ejecutar el programa, hay que entrar en el entorno virtual:  
-_Ejemplo con grado de identidad mínimo 90 y soporte mínimo 10, usando un archivo delta-blast_
+_Ejemplo con grado de identidad mínimo del 90% y soporte mínimo 10, usando un archivo delta-blast_
 
 ```bash
 pipenv shell
-./src/find_annotations.py -f tsv/Q03963.tsv 90 10
+./src/find_annotations.py -f tsv/O14733.tsv 90 10
 ```
 
 

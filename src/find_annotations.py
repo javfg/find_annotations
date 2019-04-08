@@ -56,8 +56,9 @@ if args.file:
     name = os.path.splitext(os.path.basename(args.file))[0]
 
 elif args.protein:
-    print(f"* Running with accession [{args.protein}]", end=" ")
     name = os.path.splitext(os.path.basename(args.protein))[0]
+    print(f"* Running with accession [{name}]", end=" ")
+
 
 outfile = os.path.splitext(args.outfile)[0] if args.outfile is not None else name
 
@@ -91,4 +92,4 @@ kegg_list = kegg.search_kegg(uniprot_data["Cross-reference (kegg)"])
 # Draw charts.
 multi_pie.plot(go_list, kegg_list, args.min_support, args.min_identity, name, outfile)
 
-webbrowser.open(f"{name}.html")
+webbrowser.open(f"{outfile}.html")
