@@ -20,26 +20,26 @@ Find similar proteins using Delta Blast and suggests GO annotations and KEGG
 routes associated to them.
 
 positional arguments:
-  protein               Protein to analyze
-  min_identity          Minimum identity score to consider (Default: 75)
+  protein               File with Protein accession ID or fasta sequence to analyze.
+  min_identity          Minimum identity score to consider (Default: 75).
   min_support           Minimum support degree to consider (amount of
-                        sequences sharing an annotation (Default: 10)
+                        sequences sharing an annotation (Default: 10).
 
 optional arguments:
-  -h, --help            show this help message and exit
+  -h, --help            Show this help message and exit.
   -f FILE, --file FILE  Specify dblast output file with list of similar
-                        proteins
+                        proteins.
 ```
 
 ### Descripción del proceso
 
-1. Realiza un Delta Blast o lee un archivo de resultado de Delta Blast.
-2. Busca las IDs en UniProt
-3. Extrae los términos GO
-4. Extrae las KEGG Ids
-5. Busca las Ids KEGG en la base de datos KEGG
-6. Recupera los Pathways KEGG
-7. Dibuja un diagrama con los términos GO y KEGG
+1. Lee un archivo con la ID/secuencia de una proteina y realiza un Delta Blast o lee un archivo de resultado de Delta Blast directamente.
+2. Busca las IDs de proteinas similares en UniProt.
+3. Extrae los términos GO.
+4. Extrae las KEGG IDs.
+5. Busca las Ids KEGG en la base de datos KEGG.
+6. Recupera los Pathways KEGG.
+7. Dibuja un diagrama con los términos GO y KEGG.
 
 
 ### Instalación y uso
@@ -59,12 +59,12 @@ pip install pipenv
 
 #### Preparar *virtual enviroment*
 
-Después de clonar el repo, ir al directorio raíz y ejecutar: ```pipenv install``` para crear el entorno e instalar todas las dependencias.
+Después de clonar el repositorio, ir al directorio raíz del mismo y ejecutar: ```pipenv install``` para crear el entorno e instalar todas las dependencias.
 
 #### Ejecución
 
 Para ejecutar el programa, hay que entrar en el entorno virtual:  
-_Ejemplo con grado de identidad mínimo del 90% y soporte mínimo 10, usando un archivo delta-blast_
+_Ejemplo con grado de identidad mínimo del 90% y soporte mínimo de 10 anotaciones, usando un archivo delta-blast_
 
 ```bash
 pipenv shell
