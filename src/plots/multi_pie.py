@@ -116,7 +116,7 @@ def plot(go_list, kegg_list, min_support, min_identity, name, outfile):
 
         create_html_file(go, kegg, min_identity, min_support, os.path.basename(plot_file_name), name, outfile)
         create_tsv_file(go, kegg, min_support, min_identity, name, outfile)
-         time_diff = (datetime.datetime.now() - start_time).total_seconds()
+        time_diff = (datetime.datetime.now() - start_time).total_seconds()
 
         sp.text = f"Generating statistics and plotting charts... => Task done in {time_diff} seconds."
         sp.ok("✔")
