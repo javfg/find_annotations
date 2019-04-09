@@ -84,32 +84,39 @@ def create_html_file(go, kegg, min_identity, min_support, plot_file_name, name, 
 
 # Plots the multi pie chart and stats.
 def plot(go_list, kegg_list, min_support, min_identity, name, outfile):
-    custom_style = Style(
-        opacity='0.8',
-        opacity_hover='0.5',
-        title_font_size=36,
-        tooltip_font_size=10,
-        inner_radius=0.75,
-        plot_background="rgba(249, 249, 249, 1)"
-    )
+    start_time = datetime.datetime.now()
+    with yaspin(text="Generating statistics and plotting charts...", color="cyan") as sp:
+        custom_style = Style(
+            opacity='0.8',
+            opacity_hover='0.5',
+            title_font_size=36,
+            tooltip_font_size=10,
+            inner_radius=0.75,
+            plot_background="rgba(249, 249, 249, 1)"
+        )
 
-    multi_pie = pygal.Pie(height=800, tooltip_border_radius=1, style=custom_style)
+        multi_pie = pygal.Pie(height=800, tooltip_border_radius=1, style=custom_style)
 
-    go = create_list(go_list, min_support,
-                     "https://www.ebi.ac.uk/QuickGO/term/",
-                     "rgba(255, 45, 20, .6)")
+        go = create_list(go_list, min_support,
+                         "https://www.ebi.ac.uk/QuickGO/term/",
+                         "rgba(255, 45, 20, .6)")
 
-    kegg = create_list(kegg_list, min_support,
-                       "https://www.genome.jp/dbget-bin/www_bget?",
-                       "rgba(68, 108, 179, .6)")
+        kegg = create_list(kegg_list, min_support,
+                           "https://www.genome.jp/dbget-bin/www_bget?",
+                           "rgba(68, 108, 179, .6)")
 
-    if go:
-        multi_pie.add('GO', go)
-    if kegg:
-        multi_pie.add('KEGG', kegg)
+        if go:
+            multi_pie.add('GO', go)
+        if kegg:
+            multi_pie.add('KEGG', kegg)
 
-    plot_file_name = f"{outfile}.svg"
-    multi_pie.render_to_file(plot_file_name)
+        plot_file_name = f"{outfile}.svg"
+        multi_pie.render_to_file(plot_file_name)
+        
 
-    create_html_file(go, kegg, min_identity, min_support, os.path.basename(plot_file_name), name, outfile)
-    create_tsv_file(go, kegg, min_support, min_identity, name, outfile)
+        create_html_file(go, kegg, min_identity, min_support, os.path.basename(plot_file_name), name, outfile)
+        create_tsv_file(go, kegg, min_support, min_identity, name, outfile)
+         time_diff = (datetime.datetime.now() - start_time).total_seconds()
+
+        sp.text = f"Generating statistics and plotting charts... => Task done in {time_diff} seconds."
+        sp.ok("✔")
