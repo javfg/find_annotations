@@ -1,6 +1,7 @@
 import pygal
 import os
 import datetime
+import yaspin
 
 from pygal.style import Style
 from utils.tools import create_tsv_file
