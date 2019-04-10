@@ -9,7 +9,7 @@ Javier Ferrer Gómez
 
 ### Enunciado
 
-Implementación de un método de análisis de un grupo de proteínas similares a una dada, usando delta-blast como herramienta para identificación de similitudes. El objetivo es sugerir anotaciones *GO* y rutas *KEGG* a partir de las asociadas de proteínas similares. Solo se podrán sugerir resultados soportados por un porcentaje de identidad mínimo y un grado de apoyo mínimo. Ambos valores serán especificados por el usuario en tiempo de ejecución. Un apoyo 10 significa que al menos 10 secuencias deben tener esa anotación GO o la ruta KEGG asociada.
+Implementación de un método de análisis de un grupo de proteínas similares a una dada, usando delta-blast como herramienta para identificación de similitudes. El objetivo es sugerir anotaciones *GO* y rutas *KEGG* a partir de las asociadas de proteínas similares. Solo se podrán sugerir resultados soportados por un porcentaje de identidad mínimo y un grado de apoyo mínimo. Ambos valores serán especificados por el usuario en tiempo de ejecución. Un apoyo de 10 significa que al menos 10 secuencias deben tener esa anotación GO o la ruta KEGG asociada.
 
 ### Ayuda
 
@@ -76,7 +76,7 @@ _Ejemplo con grado de identidad mínimo del 90% y soporte mínimo de 10 anotacio
 pipenv shell
 ./src/find_annotations.py -f tsv/O14733.tsv 90 10
 ```
-_Ejemplo con grado de identidad mínimo del 75% y soporte mínimo de 5 anotaciones, usando un archivo fasta. Este ejemplo requiere de la instalación previa de Delta Blast +._
+_Ejemplo con grado de identidad mínimo del 75% y soporte mínimo de 5 anotaciones, usando un archivo fasta. Este ejemplo requiere de la instalación previa de *Delta Blast +*._
 
 ```bash
 pipenv shell
