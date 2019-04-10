@@ -23,7 +23,7 @@ def search_kegg(accessions):
                         raw_data = f"{raw_data}map{_id}\t\"{val}\"\n"
                 except AttributeError:
                     pass
-        try: 
+        try:
             kegg = pandas.read_csv(pandas.compat.StringIO(raw_data), sep="\t", header=None)
             kegg.columns = ["accession", "description"]
 
@@ -34,13 +34,14 @@ def search_kegg(accessions):
                 .sort_values(by="count", ascending=False)
                 .reset_index(drop=True)
             )
+            mssg=f"* Found {sum(kegg['count'])} KEGG pathways from which {len(kegg)} were unique."
         except pandas.errors.EmptyDataError:
             kegg=pandas.DataFrame()
+            mssg=f"* Found 0 KEGG Pathways."
 
         time_diff = (datetime.datetime.now() - start_time).total_seconds()
 
         sp.text = f"Retrieving KEGG annotations => Task done in {time_diff} seconds."
         sp.ok("✔")
-        print (f"* Found {sum(kegg['count'])} KEGG pathways from which {len(kegg)} were unique.")
-
+        print (mssg)
         return kegg

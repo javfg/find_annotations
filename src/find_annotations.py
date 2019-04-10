@@ -26,18 +26,18 @@ _ = parser.add_argument("protein",
 _ = parser.add_argument("min_identity",
                         action="store",
                         type=float,
-                        help="Minimum identity score to consider (Default: 75)")
+                        help="Minimum identity score to consider")
 
 _ = parser.add_argument("min_support",
                         action="store",
                         type=int,
                         help="Minimum support degree to consider (amount of sequences sharing an\
-                              annotation (Default: 10)")
+                              annotation")
 
 _ = parser.add_argument("-f",
                         "--file",
                         action="store",
-                        help="Specify dblast output file with list of similar proteins")
+                        help="Specify DBlast output file with list of similar proteins")
 
 _ = parser.add_argument("-o",
                         "--outfile",

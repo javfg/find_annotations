@@ -25,17 +25,19 @@ def search_uniprot(genes, columns):
         raw_data = ''
         headers = True
 
-        for chunk in chunks(genes, 190):
+        for chunk in chunks(genes, 10):
             gene_search = "+OR+".join(list(chunk))
             new_data = uniprot.search(gene_search, frmt="tab", columns=f"entry name, {','.join(columns)}")
 
             # Removes first line if this is second or next batches.
-            if not headers:
-                new_data = new_data.split("\n")[1]
+            try:
+                if not headers:
+                    new_data = new_data.split("\n")[1]
 
-            raw_data = raw_data + "\n" + new_data
-            headers = False
-
+                raw_data = raw_data + "\n" + new_data
+                headers = False
+            except IndexError:
+                pass
         data = pandas.read_csv(pandas.compat.StringIO(raw_data), sep="\t")
 
         time_diff = (datetime.datetime.now() - start_time).total_seconds()
