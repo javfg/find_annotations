@@ -11,6 +11,8 @@ from sources import go
 
 from plots import multi_pie
 from utils.tools import select_data
+from utils.tools import create_entry
+from utils.tools import create_list
 
 ###################################################################################################
 # Argument parser.
@@ -92,10 +94,20 @@ uniprot_data = uniprot.search_uniprot(selected_data["subject acc.ver"], ["go", "
 # Accumulate GO data.
 go_list = go.accumulate_go(uniprot_data['Gene ontology (GO)'])
 
+# Filters GO terms and creates entries.
+go_f_list = create_list(go_list, args.min_support,
+                         "https://www.ebi.ac.uk/QuickGO/term/",
+                         "rgba(255, 45, 20, .6)","GO")
+
+
 # Finds KEGG accessions, extract description and ID.
 kegg_list = kegg.search_kegg(uniprot_data["Cross-reference (kegg)"])
 
+# Filters KEGG pathways and creates entries.
+kegg_f_list = create_list(kegg_list, args.min_support,
+                           "https://www.genome.jp/dbget-bin/www_bget?",
+                           "rgba(68, 108, 179, .6)","KEGG")
 # Draw charts.
-multi_pie.plot(go_list, kegg_list, args.min_support, args.min_identity, name, outfile)
+multi_pie.plot(go_f_list, kegg_f_list, args.min_support, args.min_identity,name, outfile)
 
 webbrowser.open(f"{outfile}.html")

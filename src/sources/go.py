@@ -32,5 +32,6 @@ def accumulate_go(source):
 
         sp.text = f"Parsing GO annotations => Task done in {time_diff} seconds."
         sp.ok("✔")
+        print (f"* Found {sum(go['count'])} GO terms from which {len(go)} were unique.")
 
         return go

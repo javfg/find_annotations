@@ -41,5 +41,6 @@ def search_kegg(accessions):
 
         sp.text = f"Retrieving KEGG annotations => Task done in {time_diff} seconds."
         sp.ok("✔")
+        print (f"* Found {sum(kegg['count'])} KEGG pathways from which {len(kegg)} were unique.")
 
         return kegg
