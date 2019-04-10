@@ -5,7 +5,7 @@ Osvaldas Vainauskas
 Javier Ferrer Gómez  
 
 
-## Trabajo 3
+## Anotaciones funcionales a partir de busquedas de Delta Blast
 
 ### Enunciado
 
@@ -14,23 +14,26 @@ Implementación de un método de análisis de un grupo de proteínas similares a
 ### Ayuda
 
 ```
-usage: find_annotations.py [-h] [-f FILE] [-o PATH] [protein] min_identity min_support
+usage: find_annotations.py [-h] [-f FILE] [-o OUTFILE]
+                           [protein] min_identity min_support
 
 Find similar proteins using Delta Blast and suggests GO annotations and KEGG
 routes associated to them.
 
 positional arguments:
-  protein                 File with Protein accession ID or fasta sequence to analyze.
-  min_identity            Minimum identity score to consider (Default: 75).
-  min_support             Minimum support degree to consider (amount of
-                          sequences sharing an annotation (Default: 10).
+  protein               Protein to analyze
+  min_identity          Minimum identity score to consider
+  min_support           Minimum support degree to consider (amount of
+                        sequences sharing an annotation
 
 optional arguments:
-  -h, --help              Show this help message and exit.
-  -f FILE, --file FILE    Specify dblast output file with list of similar
-                          proteins.
-  -o PATH, --outfile PATH Specify output filename and path. An additional .svg file will be
-                          created.
+  -h, --help            Show this help message and exit
+  -f FILE, --file FILE  Specify DBlast output file with list of similar
+                        proteins
+  -o OUTFILE, --outfile OUTFILE
+                        Specify output filename and path. An additional .svg
+                        file will be created.
+
                          
 ```
 
@@ -73,5 +76,12 @@ _Ejemplo con grado de identidad mínimo del 90% y soporte mínimo de 10 anotacio
 pipenv shell
 ./src/find_annotations.py -f tsv/O14733.tsv 90 10
 ```
+_Ejemplo con grado de identidad mínimo del 75% y soporte mínimo de 5 anotaciones, usando un archivo fasta. Este ejemplo requiere de la instalación previa de Delta Blast +._
+
+```bash
+pipenv shell
+./src/find_annotations.py fasta/Q03963 75 5
+```
+
 
 
