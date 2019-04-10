@@ -80,7 +80,7 @@ _Ejemplo con grado de identidad mínimo del 75% y soporte mínimo de 5 anotacion
 
 ```bash
 pipenv shell
-./src/find_annotations.py fasta/Q03963 75 5
+./src/find_annotations.py fasta/Q03963 20 7
 ```
 
 
