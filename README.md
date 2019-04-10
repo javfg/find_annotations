@@ -5,7 +5,7 @@ Osvaldas Vainauskas
 Javier Ferrer Gómez  
 
 
-## Anotaciones funcionales a partir de busquedas de Delta Blast
+## Anotaciones funcionales a partir de búsquedas de proteínas similares en Delta Blast.
 
 ### Enunciado
 
